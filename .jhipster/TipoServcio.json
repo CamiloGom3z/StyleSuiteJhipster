@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120023",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tipo_servcio",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valorTipoServicio",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TipoServcio",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

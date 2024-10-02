@@ -1,0 +1,27 @@
+{
+  "pruebaProyectoFinalApp": {
+    "resenia": {
+      "home": {
+        "title": "Resenias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Resenia",
+        "createOrEditLabel": "Crear o editar Resenia",
+        "notFound": "Ningún Resenias encontrado"
+      },
+      "created": "Un nuevo Resenia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Resenia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Resenia ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Resenia {{ id }}?"
+      },
+      "detail": {
+        "title": "Resenia"
+      },
+      "id": "ID",
+      "calificacion": "Calificacion",
+      "comentario": "Comentario",
+      "fecha": "Fecha",
+      "servicio": "Servicio"
+    }
+  }
+}

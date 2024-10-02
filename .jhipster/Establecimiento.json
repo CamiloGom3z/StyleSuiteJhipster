@@ -1,0 +1,61 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120027",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "establecimiento",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nit",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "correoElectronico",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Establecimiento",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "agenda",
+      "otherEntityRelationshipName": "establecimiento",
+      "relationshipName": "agendas",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "empleado",
+      "otherEntityRelationshipName": "establecimiento",
+      "relationshipName": "empleados",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "categoriaProducto",
+      "otherEntityRelationshipName": "establecimiento",
+      "relationshipName": "categoriasProducto",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "categoriaImagen",
+      "otherEntityRelationshipName": "establecimiento",
+      "relationshipName": "categoriasImagen",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

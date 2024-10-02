@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="resenia">
+      <h2 data-cy="reseniaDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.resenia.detail.title">Resenia</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ resenia.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.resenia.calificacion">Calificacion</span></dt>
+        <dd>
+          <span>{{ resenia.calificacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.resenia.comentario">Comentario</span></dt>
+        <dd>
+          <span>{{ resenia.comentario }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.resenia.fecha">Fecha</span></dt>
+        <dd>
+          <span>{{ resenia.fecha | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.resenia.servicio">Servicio</span></dt>
+        <dd>
+          <div *ngIf="resenia.servicio">
+            <a [routerLink]="['/servicio', resenia.servicio?.id, 'view']">{{ resenia.servicio?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/resenia', resenia.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

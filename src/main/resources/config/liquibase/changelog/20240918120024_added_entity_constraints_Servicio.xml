@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Servicio.
+    -->
+    <changeSet id="20240918120024-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="tipo_servicio_id"
+                                 baseTableName="servicio"
+                                 constraintName="fk_servicio__tipo_servicio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_servcio"/>
+
+        <addForeignKeyConstraint baseColumnNames="cita_id"
+                                 baseTableName="servicio"
+                                 constraintName="fk_servicio__cita_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cita"/>
+    </changeSet>
+</databaseChangeLog>

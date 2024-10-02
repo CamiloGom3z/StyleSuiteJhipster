@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cargo">
+      <h2 data-cy="cargoDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.cargo.detail.title">Cargo</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cargo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cargo.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ cargo.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cargo.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ cargo.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cargo.empleado">Empleado</span></dt>
+        <dd>
+          <div *ngIf="cargo.empleado">
+            <a [routerLink]="['/empleado', cargo.empleado?.id, 'view']">{{ cargo.empleado?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cargo', cargo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

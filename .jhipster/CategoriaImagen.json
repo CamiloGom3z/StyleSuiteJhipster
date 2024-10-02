@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120030",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "categoria_imagen",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CategoriaImagen",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "establecimiento",
+      "otherEntityRelationshipName": "categoriasImagen",
+      "relationshipName": "establecimiento",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,11 @@
+{
+  "pruebaProyectoFinalApp": {
+    "MetodoPagoEnum": {
+      "null": "",
+      "EFECTIVO": "EFECTIVO",
+      "TARJETA": "TARJETA",
+      "TRANSFERENCIA": "TRANSFERENCIA",
+      "OTRO": "OTRO"
+    }
+  }
+}

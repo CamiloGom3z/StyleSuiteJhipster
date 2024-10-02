@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="servicio">
+      <h2 data-cy="servicioDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.servicio.detail.title">Servicio</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ servicio.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.servicio.valorTotalServicio">Valor Total Servicio</span></dt>
+        <dd>
+          <span>{{ servicio.valorTotalServicio }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.servicio.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ servicio.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.servicio.fechaInicio">Fecha Inicio</span></dt>
+        <dd>
+          <span>{{ servicio.fechaInicio | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.servicio.fechaFin">Fecha Fin</span></dt>
+        <dd>
+          <span>{{ servicio.fechaFin | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.servicio.tipoServicio">Tipo Servicio</span></dt>
+        <dd>
+          <div *ngIf="servicio.tipoServicio">
+            <a [routerLink]="['/tipo-servcio', servicio.tipoServicio?.id, 'view']">{{ servicio.tipoServicio?.nombre }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.servicio.cita">Cita</span></dt>
+        <dd>
+          <div *ngIf="servicio.cita">
+            <a [routerLink]="['/cita', servicio.cita?.id, 'view']">{{ servicio.cita?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/servicio', servicio.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

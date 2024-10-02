@@ -1,0 +1,26 @@
+{
+  "pruebaProyectoFinalApp": {
+    "categoriaImagen": {
+      "home": {
+        "title": "Categoria Imagens",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Categoria Imagen",
+        "createOrEditLabel": "Crear o editar Categoria Imagen",
+        "notFound": "Ningún Categoria Imagens encontrado"
+      },
+      "created": "Un nuevo Categoria Imagen ha sido creado con el identificador {{ param }}",
+      "updated": "Un Categoria Imagen ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Categoria Imagen ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Categoria Imagen {{ id }}?"
+      },
+      "detail": {
+        "title": "Categoria Imagen"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "establecimiento": "Establecimiento"
+    }
+  }
+}

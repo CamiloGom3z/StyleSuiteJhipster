@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="establecimiento">
+      <h2 data-cy="establecimientoDetailsHeading">
+        <span jhiTranslate="pruebaProyectoFinalApp.establecimiento.detail.title">Establecimiento</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ establecimiento.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.establecimiento.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ establecimiento.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.establecimiento.nit">Nit</span></dt>
+        <dd>
+          <span>{{ establecimiento.nit }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.establecimiento.direccion">Direccion</span></dt>
+        <dd>
+          <span>{{ establecimiento.direccion }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.establecimiento.telefono">Telefono</span></dt>
+        <dd>
+          <span>{{ establecimiento.telefono }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.establecimiento.correoElectronico">Correo Electronico</span></dt>
+        <dd>
+          <span>{{ establecimiento.correoElectronico }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/establecimiento', establecimiento.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

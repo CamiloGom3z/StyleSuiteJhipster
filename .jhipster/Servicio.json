@@ -1,0 +1,59 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120024",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "servicio",
+  "fields": [
+    {
+      "fieldName": "valorTotalServicio",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fechaFin",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Servicio",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "resenia",
+      "otherEntityRelationshipName": "servicio",
+      "relationshipName": "resenias",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "tipoServcio",
+      "otherEntityRelationshipName": "servicio",
+      "relationshipName": "tipoServicio",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "cita",
+      "otherEntityRelationshipName": "servicios",
+      "relationshipName": "cita",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "promocion",
+      "otherEntityRelationshipName": "servicios",
+      "ownerSide": false,
+      "relationshipName": "promociones",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

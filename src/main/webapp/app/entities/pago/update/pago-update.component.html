@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-pago-heading" data-cy="PagoCreateUpdateHeading" jhiTranslate="pruebaProyectoFinalApp.pago.home.createOrEditLabel">
+        Create or edit a Pago
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="pruebaProyectoFinalApp.pago.monto" for="field_monto">Monto</label>
+          <input type="number" class="form-control" name="monto" id="field_monto" data-cy="monto" formControlName="monto" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="pruebaProyectoFinalApp.pago.fechaPago" for="field_fechaPago">Fecha Pago</label>
+          <div class="d-flex">
+            <input
+              id="field_fechaPago"
+              data-cy="fechaPago"
+              type="datetime-local"
+              class="form-control"
+              name="fechaPago"
+              formControlName="fechaPago"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="pruebaProyectoFinalApp.pago.metodoPago" for="field_metodoPago">Metodo Pago</label>
+          <select class="form-control" name="metodoPago" formControlName="metodoPago" id="field_metodoPago" data-cy="metodoPago">
+            <option [ngValue]="null">{{ 'pruebaProyectoFinalApp.MetodoPagoEnum.null' | translate }}</option>
+            <option *ngFor="let metodoPagoEnum of metodoPagoEnumValues" [value]="metodoPagoEnum">
+              {{ 'pruebaProyectoFinalApp.MetodoPagoEnum.' + metodoPagoEnum | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="pruebaProyectoFinalApp.pago.estado" for="field_estado">Estado</label>
+          <input type="text" class="form-control" name="estado" id="field_estado" data-cy="estado" formControlName="estado" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="pruebaProyectoFinalApp.pago.cita" for="field_cita">Cita</label>
+          <select class="form-control" id="field_cita" data-cy="cita" name="cita" formControlName="cita">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="citaOption.id === editForm.get('cita')!.value?.id ? editForm.get('cita')!.value : citaOption"
+              *ngFor="let citaOption of citasSharedCollection; trackBy: trackCitaById"
+            >
+              {{ citaOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

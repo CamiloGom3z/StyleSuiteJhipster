@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="PersonaHeading">
+    <span jhiTranslate="pruebaProyectoFinalApp.persona.home.title">Personas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="pruebaProyectoFinalApp.persona.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-persona"
+        [routerLink]="['/persona/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pruebaProyectoFinalApp.persona.home.createLabel"> Create a new Persona </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="personas?.length === 0">
+    <span jhiTranslate="pruebaProyectoFinalApp.persona.home.notFound">No personas found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="personas && personas.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="pruebaProyectoFinalApp.persona.nombre">Nombre</span></th>
+          <th scope="col"><span jhiTranslate="pruebaProyectoFinalApp.persona.apellido">Apellido</span></th>
+          <th scope="col"><span jhiTranslate="pruebaProyectoFinalApp.persona.fechaNacimiento">Fecha Nacimiento</span></th>
+          <th scope="col"><span jhiTranslate="pruebaProyectoFinalApp.persona.correoElectronico">Correo Electronico</span></th>
+          <th scope="col"><span jhiTranslate="pruebaProyectoFinalApp.persona.telefono">Telefono</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of personas; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/persona', persona.id, 'view']">{{ persona.id }}</a>
+          </td>
+          <td>{{ persona.nombre }}</td>
+          <td>{{ persona.apellido }}</td>
+          <td>{{ persona.fechaNacimiento | formatMediumDatetime }}</td>
+          <td>{{ persona.correoElectronico }}</td>
+          <td>{{ persona.telefono }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/persona', persona.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/persona', persona.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(persona)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

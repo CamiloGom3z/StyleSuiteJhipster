@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="empleado">
+      <h2 data-cy="empleadoDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.empleado.detail.title">Empleado</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ empleado.id }}</span>
+        </dd>
+        <dd>
+          <div *ngIf="empleado.cargoEmpleado">
+            <a [routerLink]="['/cargo', empleado.cargoEmpleado, 'view']">{{ empleado.cargoEmpleado }}</a>
+          </div>
+        </dd>
+        <dd>
+          <span>{{ empleado.cargoEmpleado }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.empleado.salario">Salario</span></dt>
+        <dd>
+          <span>{{ empleado.salario }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.empleado.persona">Persona</span></dt>
+        <dd>
+          <div *ngIf="empleado.persona">
+            <a [routerLink]="['/persona', empleado.persona?.id, 'view']">{{ empleado.persona?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.empleado.establecimiento">Establecimiento</span></dt>
+        <dd>
+          <div *ngIf="empleado.establecimiento">
+            <a [routerLink]="['/establecimiento', empleado.establecimiento?.id, 'view']">{{ empleado.establecimiento?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/empleado', empleado.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

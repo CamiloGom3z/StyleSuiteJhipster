@@ -1,0 +1,32 @@
+{
+  "pruebaProyectoFinalApp": {
+    "establecimiento": {
+      "home": {
+        "title": "Establecimientos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Establecimiento",
+        "createOrEditLabel": "Crear o editar Establecimiento",
+        "notFound": "Ningún Establecimientos encontrado"
+      },
+      "created": "Un nuevo Establecimiento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Establecimiento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Establecimiento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Establecimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Establecimiento"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "nit": "Nit",
+      "direccion": "Direccion",
+      "telefono": "Telefono",
+      "correoElectronico": "Correo Electronico",
+      "agendas": "Agendas",
+      "empleados": "Empleados",
+      "categoriasProducto": "Categorias Producto",
+      "categoriasImagen": "Categorias Imagen"
+    }
+  }
+}

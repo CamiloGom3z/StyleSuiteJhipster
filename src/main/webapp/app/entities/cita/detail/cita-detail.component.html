@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cita">
+      <h2 data-cy="citaDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.cita.detail.title">Cita</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cita.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cita.fechaCita">Fecha Cita</span></dt>
+        <dd>
+          <span>{{ cita.fechaCita | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cita.fechaFinCita">Fecha Fin Cita</span></dt>
+        <dd>
+          <span>{{ cita.fechaFinCita | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cita.estado">Estado</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'pruebaProyectoFinalApp.EstadoCitaEnum.' + cita.estado }}">{{ cita.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cita.notas">Notas</span></dt>
+        <dd>
+          <span>{{ cita.notas }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cita.agendaEmpleado">Agenda Empleado</span></dt>
+        <dd>
+          <div *ngIf="cita.agendaEmpleado">
+            <a [routerLink]="['/agenda-empleado', cita.agendaEmpleado?.id, 'view']">{{ cita.agendaEmpleado?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.cita.cliente">Cliente</span></dt>
+        <dd>
+          <div *ngIf="cita.cliente">
+            <a [routerLink]="['/persona', cita.cliente?.id, 'view']">{{ cita.cliente?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cita', cita.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

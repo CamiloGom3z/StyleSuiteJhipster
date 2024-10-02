@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tipoServcio">
+      <h2 data-cy="tipoServcioDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.tipoServcio.detail.title">Tipo Servcio</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tipoServcio.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.tipoServcio.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ tipoServcio.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.tipoServcio.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ tipoServcio.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.tipoServcio.valorTipoServicio">Valor Tipo Servicio</span></dt>
+        <dd>
+          <span>{{ tipoServcio.valorTipoServicio }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tipo-servcio', tipoServcio.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

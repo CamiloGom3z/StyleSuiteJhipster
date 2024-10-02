@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="imagen">
+      <h2 data-cy="imagenDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.imagen.detail.title">Imagen</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ imagen.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.imagen.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ imagen.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.imagen.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ imagen.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.imagen.urlImagen">Url Imagen</span></dt>
+        <dd>
+          <span>{{ imagen.urlImagen }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.imagen.categoriaImagen">Categoria Imagen</span></dt>
+        <dd>
+          <div *ngIf="imagen.categoriaImagen">
+            <a [routerLink]="['/categoria-imagen', imagen.categoriaImagen?.id, 'view']">{{ imagen.categoriaImagen?.nombre }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/imagen', imagen.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

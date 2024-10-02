@@ -1,0 +1,26 @@
+{
+  "pruebaProyectoFinalApp": {
+    "tipoServcio": {
+      "home": {
+        "title": "Tipo Servcios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Tipo Servcio",
+        "createOrEditLabel": "Crear o editar Tipo Servcio",
+        "notFound": "Ningún Tipo Servcios encontrado"
+      },
+      "created": "Un nuevo Tipo Servcio ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Servcio ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Servcio ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Servcio {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Servcio"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "valorTipoServicio": "Valor Tipo Servicio"
+    }
+  }
+}

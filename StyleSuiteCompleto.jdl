@@ -1,0 +1,182 @@
+enum MetodoPagoEnum {
+    EFECTIVO,
+    TARJETA,
+    TRANSFERENCIA,
+    OTRO
+}
+
+enum EstadoCitaEnum {
+    PENDIENTE,
+    CONFIRMADA,
+    CANCELADA,
+    PAGADA,
+	OTRO
+}
+
+entity Persona {
+    nombre String
+    apellido String
+    fechaNacimiento Instant
+    correoElectronico String
+    telefono String
+}
+
+entity Cargo {
+    nombre String
+    descripcion Double
+}
+
+entity Empleado {
+    cargoEmpleado String
+    salario Double
+}
+
+entity Cita {
+    fechaCita Instant
+    fechaFinCita Instant
+    estado EstadoCitaEnum
+    notas String
+}
+
+entity TipoServcio {
+	nombre String
+    descripcion String
+    valorTipoServicio BigDecimal
+}
+
+entity Servicio {
+    valorTotalServicio BigDecimal
+    descripcion String
+    fechaInicio Instant
+    fechaFin Instant
+}
+
+entity Agenda {
+    fechaInicio Instant
+    fechaFin Instant
+    disponible Boolean
+}
+entity AgendaEmpleado {
+    fechaInicio Instant
+    fechaFin Instant
+    disponible Boolean
+}
+
+entity Establecimiento {
+    nombre String
+    nit Long
+    direccion String
+    telefono String
+    correoElectronico String
+}
+
+entity Productos {
+    nombre String
+    descripcion String
+    precio BigDecimal
+    cantidad Integer
+}
+
+entity CategoriaProducto {
+    nombre String
+    descripcion String
+}
+
+entity CategoriaImagen {
+    nombre String
+    descripcion String
+}
+
+entity Imagen {
+    nombre String
+    descripcion String
+    urlImagen String
+    
+}
+
+entity Resenia {
+    calificacion Integer
+    comentario String
+    fecha Instant
+}
+
+entity Promocion {
+    nombre String
+    descripcion String
+    porcentajeDescuento BigDecimal
+    fechaInicio Instant
+    fechaFin Instant
+    tipoPromocion String
+}
+
+entity Pago {
+    monto BigDecimal
+    fechaPago Instant
+    metodoPago MetodoPagoEnum
+    estado String
+}
+//tablas faltantes
+//Agenda
+//AgentaEmpleado
+// Cada Persona puede tener muchas Citas, pero una Cita está relacionada con una Persona (cliente)
+relationship OneToMany {
+    Persona{citas} to Cita{cliente}
+    Empleado{cargo} to Cargo {empleado}
+}
+
+// Un Empleado también es una Persona, por lo que utilizamos herencia aquí.
+relationship OneToOne {
+    Empleado{persona} to Persona
+}
+
+// Cada Cita puede tener muchos Servicios, pero un Servicio está relacionado con una Cita
+relationship OneToMany {
+    Cita{servicios} to Servicio{cita}
+    Establecimiento{agendas} to Agenda{establecimiento}
+    Empleado{agendaEmpleado} to AgendaEmpleado{empleado}
+}
+
+// Cada Establecimiento puede tener muchos Empleados
+relationship OneToMany {
+    Establecimiento{empleados} to Empleado{establecimiento}
+}
+
+// Cada Servicio está asociado con un TipoServicio, pero un TipoServicio puede ser utilizado por muchos Servicios
+relationship ManyToOne {
+    Servicio{tipoServicio(nombre)} to TipoServcio
+}
+
+// Un Producto pertenece a una CategoriaProducto, y una CategoriaProducto puede tener muchos Productos
+relationship ManyToOne {
+    Productos{categoriaProducto(nombre)} to CategoriaProducto
+}
+
+// Una Imagen pertenece a una CategoriaImagen, y una CategoriaImagen puede tener muchas Imágenes
+relationship ManyToOne {
+    Imagen{categoriaImagen(nombre)} to CategoriaImagen
+}
+
+// Cada Resenia está relacionada con un Servicio, y un Servicio puede tener muchas Resenias
+relationship OneToMany {
+    Servicio{resenias} to Resenia{servicio}
+    Establecimiento{categoriasProducto} to CategoriaProducto{establecimiento}
+    Establecimiento{categoriasImagen} to CategoriaImagen{establecimiento}
+}
+
+// Una Promoción puede estar asociada con muchos Servicios, y un Servicio puede tener muchas Promociones
+relationship ManyToMany {
+    Promocion{servicios} to Servicio{promociones}
+}
+// Relación: Cada Cita también puede bloquear un horario en la AgendaEmpleado.
+relationship OneToOne {
+    Cita{agendaEmpleado} to AgendaEmpleado{cita}
+}
+
+// Cada Pago está relacionado con una Cita, y una Cita puede tener muchos Pagos
+relationship OneToMany {
+    Cita{pagos} to Pago{cita}
+}
+
+
+dto * with mapstruct
+service all with serviceImpl

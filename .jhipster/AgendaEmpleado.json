@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120026",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "agenda_empleado",
+  "fields": [
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fechaFin",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "disponible",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AgendaEmpleado",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "cita",
+      "otherEntityRelationshipName": "agendaEmpleado",
+      "ownerSide": false,
+      "relationshipName": "cita",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "empleado",
+      "otherEntityRelationshipName": "agendaEmpleado",
+      "relationshipName": "empleado",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

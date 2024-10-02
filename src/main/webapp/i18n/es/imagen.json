@@ -1,0 +1,27 @@
+{
+  "pruebaProyectoFinalApp": {
+    "imagen": {
+      "home": {
+        "title": "Imagens",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Imagen",
+        "createOrEditLabel": "Crear o editar Imagen",
+        "notFound": "Ningún Imagens encontrado"
+      },
+      "created": "Un nuevo Imagen ha sido creado con el identificador {{ param }}",
+      "updated": "Un Imagen ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Imagen ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Imagen {{ id }}?"
+      },
+      "detail": {
+        "title": "Imagen"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "urlImagen": "Url Imagen",
+      "categoriaImagen": "Categoria Imagen"
+    }
+  }
+}

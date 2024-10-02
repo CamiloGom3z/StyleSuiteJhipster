@@ -1,0 +1,50 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120021",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "empleado",
+  "fields": [
+    {
+      "fieldName": "cargoEmpleado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "salario",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Empleado",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "persona",
+      "otherEntityRelationshipName": "empleado",
+      "ownerSide": true,
+      "relationshipName": "persona",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "cargo",
+      "otherEntityRelationshipName": "empleado",
+      "relationshipName": "cargo",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "agendaEmpleado",
+      "otherEntityRelationshipName": "empleado",
+      "relationshipName": "agendaEmpleado",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "establecimiento",
+      "otherEntityRelationshipName": "empleados",
+      "relationshipName": "establecimiento",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

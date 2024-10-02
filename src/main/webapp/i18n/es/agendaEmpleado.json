@@ -1,0 +1,28 @@
+{
+  "pruebaProyectoFinalApp": {
+    "agendaEmpleado": {
+      "home": {
+        "title": "Agenda Empleados",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Agenda Empleado",
+        "createOrEditLabel": "Crear o editar Agenda Empleado",
+        "notFound": "Ningún Agenda Empleados encontrado"
+      },
+      "created": "Un nuevo Agenda Empleado ha sido creado con el identificador {{ param }}",
+      "updated": "Un Agenda Empleado ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Agenda Empleado ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Agenda Empleado {{ id }}?"
+      },
+      "detail": {
+        "title": "Agenda Empleado"
+      },
+      "id": "ID",
+      "fechaInicio": "Fecha Inicio",
+      "fechaFin": "Fecha Fin",
+      "disponible": "Disponible",
+      "cita": "Cita",
+      "empleado": "Empleado"
+    }
+  }
+}

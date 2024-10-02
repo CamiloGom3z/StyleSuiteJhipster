@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="agendaEmpleado">
+      <h2 data-cy="agendaEmpleadoDetailsHeading">
+        <span jhiTranslate="pruebaProyectoFinalApp.agendaEmpleado.detail.title">Agenda Empleado</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ agendaEmpleado.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.agendaEmpleado.fechaInicio">Fecha Inicio</span></dt>
+        <dd>
+          <span>{{ agendaEmpleado.fechaInicio | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.agendaEmpleado.fechaFin">Fecha Fin</span></dt>
+        <dd>
+          <span>{{ agendaEmpleado.fechaFin | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.agendaEmpleado.disponible">Disponible</span></dt>
+        <dd>
+          <span>{{ agendaEmpleado.disponible }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.agendaEmpleado.empleado">Empleado</span></dt>
+        <dd>
+          <div *ngIf="agendaEmpleado.empleado">
+            <a [routerLink]="['/empleado', agendaEmpleado.empleado?.id, 'view']">{{ agendaEmpleado.empleado?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/agenda-empleado', agendaEmpleado.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

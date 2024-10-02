@@ -1,0 +1,59 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120022",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "cita",
+  "fields": [
+    {
+      "fieldName": "fechaCita",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fechaFinCita",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoCitaEnum",
+      "fieldValues": "PENDIENTE,CONFIRMADA,CANCELADA,PAGADA,OTRO"
+    },
+    {
+      "fieldName": "notas",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Cita",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "agendaEmpleado",
+      "otherEntityRelationshipName": "cita",
+      "ownerSide": true,
+      "relationshipName": "agendaEmpleado",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "servicio",
+      "otherEntityRelationshipName": "cita",
+      "relationshipName": "servicios",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "pago",
+      "otherEntityRelationshipName": "cita",
+      "relationshipName": "pagos",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "persona",
+      "otherEntityRelationshipName": "citas",
+      "relationshipName": "cliente",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

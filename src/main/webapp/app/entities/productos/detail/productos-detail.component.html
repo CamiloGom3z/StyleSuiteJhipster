@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="productos">
+      <h2 data-cy="productosDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.productos.detail.title">Productos</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ productos.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.productos.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ productos.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.productos.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ productos.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.productos.precio">Precio</span></dt>
+        <dd>
+          <span>{{ productos.precio }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.productos.cantidad">Cantidad</span></dt>
+        <dd>
+          <span>{{ productos.cantidad }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.productos.categoriaProducto">Categoria Producto</span></dt>
+        <dd>
+          <div *ngIf="productos.categoriaProducto">
+            <a [routerLink]="['/categoria-producto', productos.categoriaProducto?.id, 'view']">{{ productos.categoriaProducto?.nombre }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/productos', productos.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pago">
+      <h2 data-cy="pagoDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.pago.detail.title">Pago</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ pago.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.pago.monto">Monto</span></dt>
+        <dd>
+          <span>{{ pago.monto }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.pago.fechaPago">Fecha Pago</span></dt>
+        <dd>
+          <span>{{ pago.fechaPago | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.pago.metodoPago">Metodo Pago</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'pruebaProyectoFinalApp.MetodoPagoEnum.' + pago.metodoPago }}">{{ pago.metodoPago }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.pago.estado">Estado</span></dt>
+        <dd>
+          <span>{{ pago.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.pago.cita">Cita</span></dt>
+        <dd>
+          <div *ngIf="pago.cita">
+            <a [routerLink]="['/cita', pago.cita?.id, 'view']">{{ pago.cita?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/pago', pago.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

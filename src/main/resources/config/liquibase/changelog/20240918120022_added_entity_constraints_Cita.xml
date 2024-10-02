@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Cita.
+    -->
+    <changeSet id="20240918120022-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="agenda_empleado_id"
+                                 baseTableName="cita"
+                                 constraintName="fk_cita__agenda_empleado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agenda_empleado"/>
+
+        <addForeignKeyConstraint baseColumnNames="cliente_id"
+                                 baseTableName="cita"
+                                 constraintName="fk_cita__cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="persona"/>
+    </changeSet>
+</databaseChangeLog>

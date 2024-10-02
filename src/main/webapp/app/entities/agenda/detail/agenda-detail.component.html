@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="agenda">
+      <h2 data-cy="agendaDetailsHeading"><span jhiTranslate="pruebaProyectoFinalApp.agenda.detail.title">Agenda</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ agenda.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.agenda.fechaInicio">Fecha Inicio</span></dt>
+        <dd>
+          <span>{{ agenda.fechaInicio | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.agenda.fechaFin">Fecha Fin</span></dt>
+        <dd>
+          <span>{{ agenda.fechaFin | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.agenda.disponible">Disponible</span></dt>
+        <dd>
+          <span>{{ agenda.disponible }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaProyectoFinalApp.agenda.establecimiento">Establecimiento</span></dt>
+        <dd>
+          <div *ngIf="agenda.establecimiento">
+            <a [routerLink]="['/establecimiento', agenda.establecimiento?.id, 'view']">{{ agenda.establecimiento?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/agenda', agenda.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

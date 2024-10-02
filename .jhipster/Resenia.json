@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120032",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "resenia",
+  "fields": [
+    {
+      "fieldName": "calificacion",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "comentario",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fecha",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Resenia",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "servicio",
+      "otherEntityRelationshipName": "resenias",
+      "relationshipName": "servicio",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

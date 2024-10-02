@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20240918120031",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "imagen",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urlImagen",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Imagen",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "categoriaImagen",
+      "otherEntityRelationshipName": "imagen",
+      "relationshipName": "categoriaImagen",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
