@@ -1,3 +1,51 @@
-<div class="footer">
-  <p jhiTranslate="footer">This is your footer</p>
+<div class="footer bg-dark text-light py-1" style="font-size: 0.9rem; padding: 0.5rem 0">
+  <div class="container">
+    <div class="row">
+      <!-- Sección de información del proyecto -->
+      <div class="col-md-4">
+        <h5 style="font-size: 1rem">About StyleSuite</h5>
+        <p style="margin-bottom: 0.5rem">
+          StyleSuite es un sistema de gestión de citas especializado en barbershops, ofreciendo la mejor experiencia tanto para clientes
+          como para barberos.
+        </p>
+      </div>
+
+      <!-- Sección de enlaces importantes -->
+      <div class="col-md-4">
+        <h5 style="font-size: 1rem">Quick Links</h5>
+        <ul class="list-unstyled" style="margin-bottom: 0.5rem">
+          <li><a routerLink="/terms" class="text-light">Términos de Servicio</a></li>
+          <li><a routerLink="/privacy" class="text-light">Política de Privacidad</a></li>
+          <li><a routerLink="/contact" class="text-light">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Sección de redes sociales -->
+      <div class="col-md-4">
+        <h5 style="font-size: 1rem">Síguenos</h5>
+        <ul class="list-inline" style="margin-bottom: 0.5rem">
+          <li class="list-inline-item">
+            <a href="https://facebook.com" target="_blank" class="text-light">
+              <i class="fab fa-facebook fa-2x"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://twitter.com" target="_blank" class="text-light">
+              <i class="fab fa-twitter fa-2x"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://instagram.com" target="_blank" class="text-light">
+              <i class="fab fa-instagram fa-2x"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sección de derechos reservados -->
+    <div class="text-center mt-2">
+      <p class="mb-0" style="font-size: 0.8rem">&copy; {{ currentYear }} StyleSuite. Todos los derechos reservados.</p>
+    </div>
+  </div>
 </div>
