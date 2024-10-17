@@ -3,10 +3,14 @@ package com.pruebaproyecto.app.web.rest;
 import com.pruebaproyecto.app.domain.User;
 import com.pruebaproyecto.app.repository.UserRepository;
 import com.pruebaproyecto.app.security.SecurityUtils;
+import com.pruebaproyecto.app.service.EstablecimientoService;
 import com.pruebaproyecto.app.service.MailService;
+import com.pruebaproyecto.app.service.PersonaService;
 import com.pruebaproyecto.app.service.UserService;
 import com.pruebaproyecto.app.service.dto.AdminUserDTO;
+import com.pruebaproyecto.app.service.dto.EstablecimientoDTO;
 import com.pruebaproyecto.app.service.dto.PasswordChangeDTO;
+import com.pruebaproyecto.app.service.dto.PersonaDTO;
 import com.pruebaproyecto.app.web.rest.errors.*;
 import com.pruebaproyecto.app.web.rest.vm.KeyAndPasswordVM;
 import com.pruebaproyecto.app.web.rest.vm.ManagedUserVM;
@@ -34,34 +38,52 @@ public class AccountResource {
     }
 
     private final Logger log = LoggerFactory.getLogger(AccountResource.class);
-
     private final UserRepository userRepository;
-
     private final UserService userService;
-
     private final MailService mailService;
+    private final PersonaService personaService; // Agregar servicio de Persona
+    private final EstablecimientoService establecimientoService; // Agregar servicio de Establecimiento
 
-    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
+    public AccountResource(
+        UserRepository userRepository,
+        UserService userService,
+        MailService mailService,
+        PersonaService personaService,
+        EstablecimientoService establecimientoService
+    ) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;
+        this.personaService = personaService; // Inicializar servicio de Persona
+        this.establecimientoService = establecimientoService; // Inicializar servicio de Establecimiento
     }
 
-    /**
-     * {@code POST  /register} : register the user.
-     *
-     * @param managedUserVM the managed user View Model.
-     * @throws InvalidPasswordException {@code 400 (Bad Request)} if the password is incorrect.
-     * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already used.
-     * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is already used.
-     */
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public void registerAccount(@Valid @RequestBody ManagedUserVM managedUserVM) {
         if (isPasswordLengthInvalid(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
+
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+
+        // Lógica para crear Persona o Establecimiento según el rol
+        if (managedUserVM.getAuthorities().contains("ROLE_USER")) {
+            PersonaDTO personaDTO = new PersonaDTO();
+            // Asigna propiedades a personaDTO según sea necesario
+            personaDTO.setUser(user);
+            personaDTO.setNombre(user.getFirstName());
+            personaDTO.setApellido(user.getLastName());
+            personaDTO.setCorreoElectronico(user.getEmail());
+            personaDTO.setTelefono(user.getTelefono());
+            personaService.save(personaDTO);
+        } else if (managedUserVM.getAuthorities().contains("ROLE_ESTABLECIMIENTO")) {
+            EstablecimientoDTO establecimientoDTO = new EstablecimientoDTO();
+            // Asigna propiedades a establecimientoDTO según sea necesario
+            establecimientoDTO.setUser(user);
+            establecimientoService.save(establecimientoDTO);
+        }
+
         mailService.sendActivationEmail(user);
     }
 

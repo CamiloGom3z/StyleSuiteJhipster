@@ -1,5 +1,6 @@
 package com.pruebaproyecto.app.service.dto;
 
+import com.pruebaproyecto.app.domain.User;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
@@ -8,6 +9,8 @@ import java.util.Objects;
  * A DTO for the {@link com.pruebaproyecto.app.domain.Persona} entity.
  */
 public class PersonaDTO implements Serializable {
+
+    private User user;
 
     private Long id;
 
@@ -20,6 +23,14 @@ public class PersonaDTO implements Serializable {
     private String correoElectronico;
 
     private String telefono;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Long getId() {
         return id;

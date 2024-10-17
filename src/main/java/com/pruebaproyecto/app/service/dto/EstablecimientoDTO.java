@@ -1,5 +1,7 @@
 package com.pruebaproyecto.app.service.dto;
 
+import com.pruebaproyecto.app.domain.Establecimiento;
+import com.pruebaproyecto.app.domain.User;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -8,8 +10,9 @@ import java.util.Objects;
  */
 public class EstablecimientoDTO implements Serializable {
 
+    private Establecimiento establecimiento;
     private Long id;
-
+    private User user;
     private String nombre;
 
     private Long nit;
@@ -19,6 +22,22 @@ public class EstablecimientoDTO implements Serializable {
     private String telefono;
 
     private String correoElectronico;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Establecimiento getEstablecimiento() {
+        return establecimiento;
+    }
+
+    public void setEstablecimiento(Establecimiento establecimiento) {
+        this.establecimiento = establecimiento;
+    }
 
     public Long getId() {
         return id;

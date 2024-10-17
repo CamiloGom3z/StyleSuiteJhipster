@@ -69,6 +69,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "image_url", length = 256)
     private String imageUrl;
 
+    @Size(max = 256)
+    @Column(name = "telefono", length = 15)
+    private String telefono;
+
     @Size(max = 20)
     @Column(name = "activation_key", length = 20)
     @JsonIgnore
@@ -92,6 +96,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
+
+    public @Size(max = 256) String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(@Size(max = 256) String telefono) {
+        this.telefono = telefono;
+    }
 
     public Long getId() {
         return id;
